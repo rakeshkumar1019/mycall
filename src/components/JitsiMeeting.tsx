@@ -2,6 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 
+// JaaS (Jitsi as a Service) tenant configuration
+const JAAS_TENANT_ID = "vpaas-magic-cookie-e7012e1d980d4841b0365b8e32b8abfc";
+const JAAS_SCRIPT_URL = `https://8x8.vc/${JAAS_TENANT_ID}/external_api.js`;
+
 interface JitsiMeetingProps {
     roomName: string;
     displayName?: string;
@@ -34,7 +38,7 @@ export default function JitsiMeeting({
 
         // Load the Jitsi Meet External API script
         const script = document.createElement("script");
-        script.src = "https://meet.jit.si/external_api.js";
+        script.src = JAAS_SCRIPT_URL;
         script.async = true;
         script.onload = () => {
             if (!disposed) initJitsi();
@@ -49,8 +53,8 @@ export default function JitsiMeeting({
             if (!containerRef.current || !window.JitsiMeetExternalAPI) return;
 
             try {
-                const api = new window.JitsiMeetExternalAPI("meet.jit.si", {
-                    roomName: roomName,
+                const api = new window.JitsiMeetExternalAPI("8x8.vc", {
+                    roomName: `${JAAS_TENANT_ID}/${roomName}`,
                     parentNode: containerRef.current,
                     width: "100%",
                     height: "100%",
