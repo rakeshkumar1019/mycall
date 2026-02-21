@@ -62,33 +62,8 @@ export default function JitsiMeeting({
                         displayName: displayName,
                     },
                     configOverwrite: {
-                        startWithAudioMuted: false,
-                        startWithVideoMuted: false,
                         prejoinPageEnabled: true,
                         disableDeepLinking: true,
-                        p2p: {
-                            enabled: true,
-                        },
-                    },
-                    interfaceConfigOverwrite: {
-                        SHOW_JITSI_WATERMARK: false,
-                        SHOW_WATERMARK_FOR_GUESTS: false,
-                        SHOW_BRAND_WATERMARK: false,
-                        SHOW_CHROME_EXTENSION_BANNER: false,
-                        MOBILE_APP_PROMO: false,
-                        HIDE_INVITE_MORE_HEADER: false,
-                        TOOLBAR_BUTTONS: [
-                            "microphone",
-                            "camera",
-                            "desktop",
-                            "fullscreen",
-                            "hangup",
-                            "chat",
-                            "raisehand",
-                            "tileview",
-                            "settings",
-                            "filmstrip",
-                        ],
                     },
                 });
 

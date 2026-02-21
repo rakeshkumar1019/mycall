@@ -7,10 +7,7 @@ import {
   Users,
   Globe,
   Shield,
-  ArrowRight,
   Sparkles,
-  Copy,
-  Check,
 } from "lucide-react";
 
 function generateRoomId(): string {
@@ -48,12 +45,10 @@ const FEATURES = [
 export default function Home() {
   const router = useRouter();
   const [roomInput, setRoomInput] = useState("");
-  const [generatedRoom, setGeneratedRoom] = useState("");
-  const [copied, setCopied] = useState(false);
 
   const handleNewMeeting = () => {
     const room = generateRoomId();
-    setGeneratedRoom(room);
+    router.push(`/meeting/${encodeURIComponent(room)}`);
   };
 
   const handleJoinRoom = () => {
@@ -61,20 +56,6 @@ export default function Home() {
     if (room) {
       router.push(`/meeting/${encodeURIComponent(room)}`);
     }
-  };
-
-  const handleStartGenerated = () => {
-    if (generatedRoom) {
-      router.push(`/meeting/${encodeURIComponent(generatedRoom)}`);
-    }
-  };
-
-  const handleCopy = () => {
-    if (!generatedRoom) return;
-    const url = `${window.location.origin}/meeting/${generatedRoom}`;
-    navigator.clipboard.writeText(url);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -220,67 +201,6 @@ export default function Home() {
                 New Meeting
               </button>
 
-              {/* Generated room */}
-              {generatedRoom && (
-                <div
-                  style={{
-                    marginBottom: 20,
-                    padding: 16,
-                    borderRadius: 14,
-                    background: "rgba(108,92,231,0.08)",
-                    border: "1px solid var(--border-color)",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 12,
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: "monospace",
-                        fontSize: 18,
-                        fontWeight: 600,
-                        color: "var(--accent-secondary)",
-                      }}
-                    >
-                      {generatedRoom}
-                    </span>
-                    <button
-                      onClick={handleCopy}
-                      style={{
-                        background: "none",
-                        border: "none",
-                        cursor: "pointer",
-                        color: "var(--text-secondary)",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 4,
-                        fontSize: 13,
-                      }}
-                    >
-                      {copied ? (
-                        <Check size={16} color="var(--success)" />
-                      ) : (
-                        <Copy size={16} />
-                      )}
-                      {copied ? "Copied!" : "Copy link"}
-                    </button>
-                  </div>
-                  <button
-                    className="glow-btn glow-btn-secondary"
-                    onClick={handleStartGenerated}
-                    style={{ width: "100%" }}
-                  >
-                    Start Meeting <ArrowRight size={18} />
-                  </button>
-                </div>
-              )}
 
               <div className="divider" style={{ margin: "4px 0 20px" }}>
                 OR
