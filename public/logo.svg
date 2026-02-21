@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="100%" stop-color="#a29bfe"/>
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a29bfe"/>
+      <stop offset="50%" stop-color="#74b9ff"/>
+      <stop offset="100%" stop-color="#00cec9"/>
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6c5ce7" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#a29bfe" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Main play-flow shape -->
+  <g filter="url(#glow)">
+    <!-- Outer flowing shape - rounded triangle with wave tail -->
+    <path d="M160 96 C160 72, 180 56, 204 68 L400 180 C432 198, 432 234, 400 252 L300 310 C280 322, 260 330, 240 340 Q180 372, 140 340 Q100 308, 120 252 L160 96 Z" fill="url(#grad3)" opacity="0.5"/>
+
+    <!-- Main play triangle with rounded corners -->
+    <path d="M180 128 C180 104, 200 92, 220 104 L388 200 C412 214, 412 250, 388 264 L220 360 C200 372, 180 360, 180 336 Z" fill="url(#grad1)" rx="20"/>
+
+    <!-- Inner triangle cutout (play button hole) -->
+    <path d="M228 192 L328 240 C336 244, 336 256, 328 260 L228 308 C220 312, 212 308, 212 300 L212 200 C212 192, 220 188, 228 192 Z" fill="#1a1a2e"/>
+
+    <!-- Flow wave accent -->
+    <path d="M340 280 Q380 300, 380 340 Q380 380, 340 390 Q300 400, 280 380 Q260 360, 290 340 Q320 320, 340 280 Z" fill="url(#grad2)" opacity="0.8"/>
+  </g>
+
+  <!-- Small accent dots -->
+  <circle cx="410" cy="150" r="6" fill="#a29bfe" opacity="0.6"/>
+  <circle cx="430" cy="180" r="4" fill="#74b9ff" opacity="0.4"/>
+  <circle cx="140" cy="380" r="5" fill="#a29bfe" opacity="0.5"/>
+</svg>

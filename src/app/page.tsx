@@ -101,19 +101,15 @@ export default function Home() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div
+            <img
+              src="/logo.svg"
+              alt="MeetFlow Logo"
               style={{
                 width: 40,
                 height: 40,
                 borderRadius: 12,
-                background: "linear-gradient(135deg, #6c5ce7, #a29bfe)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
               }}
-            >
-              <Video size={22} color="white" />
-            </div>
+            />
             <span style={{ fontSize: 22, fontWeight: 700 }}>MeetFlow</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
